@@ -1,0 +1,26 @@
+﻿<html>
+<head>
+   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+   <link rel='stylesheet' href='https://unpkg.com/formiojs@latest/dist/formio.full.min.css'>
+   <script src='https://unpkg.com/formiojs@latest/dist/formio.full.min.js'></script>
+   <script src='json/form.json.js'></script>
+   <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+   
+   <script type='text/javascript'>
+window.onload = function() {
+  Formio.createForm(document.getElementById('formio'), formObj)
+};
+
+   </script>
+</head>
+<body>
+<div class="container bg-faded">
+   <div class="row">
+        <div class="col-12" id="formio"></div>
+    </div>
+ </div>
+<div class="center" id="holder"></div>
+
+</body>
+</html>
+
