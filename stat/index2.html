@@ -1,0 +1,39 @@
+<html>
+    <head>
+      <meta charset="utf-8">
+      <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>        
+		<script type="text/javascript">  
+var funcurl = "https://testssc.azurewebsites.net/api/simplecalc?code=JE7sF1qKfCjXqRxpEkkW1bpsDfP8awNRlWlExB3ZIGQp0VGOph6H5w==";      
+         
+function addtwonumbers() {
+   var formdata = {"n1":parseInt($("#n1").val()),"n2":parseInt($("#n2").val())};
+
+   var settings = {
+     "crossDomain": true,     
+     "url": funcurl,
+     "timeout":30000,
+     "method": "POST",
+     "data": JSON.stringify(formdata),
+     "dataType": 'json',
+     "contentType": 'application/json'                          
+   }
+
+   $.ajax(settings).done(function (data,textStatus,request) {
+      $("#res").val(data.res);
+   }).fail(function (err, textStatus, errorThrown) {
+      console.log("AJAX REQUEST FAILED:"+err.toString()+',textStatus='+textStatus+', errorThrown='+errorThrown+", url="+url+",formdata="+(formdata!=null ? JSON.stringify(formdata) : null));
+      alert("AJAX REQUEST FAILED:"+err.toString()+',textStatus='+textStatus+', errorThrown='+errorThrown+", url="+url+",formdata="+(formdata!=null ? JSON.stringify(formdata) : null));
+   });
+}
+
+		</script>
+    </head>
+    <body>
+    <div>
+   <p>N1: <input id="n1" name="n1" style="width: 50%"/></p> 
+   <p>N2: <input id="n2" name="n2" style="width: 50%"/></p> 
+   <p><input type="button" onclick="addtwonumbers()" value="Add"/></p> 
+   <p>RES: <input id="res" name="res" style="width: 50%" readonly="true"/></p> 
+    </div>
+    </body>
+</html>
